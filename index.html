@@ -282,6 +282,36 @@
         @media (min-width: 768px) {
             .swipe-area { display: none; }
         }
+/* --- NOVO SELETOR DE COR (Mobile Friendly) --- */
+.color-picker-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 8px 15px;
+    border-radius: 40px;
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 100;
+    border: 1px solid #333;
+}
+.color-picker-container label {
+    color: white;
+    font-size: 14px;
+    font-family: sans-serif;
+}
+#snakeColorPicker {
+    width: 40px;
+    height: 40px;
+    border: 2px solid white;
+    border-radius: 50%;
+    background: #00ff00;
+    padding: 0;
+    cursor: pointer;
+}
+        
     </style>
 </head>
 <body>
@@ -933,7 +963,8 @@
                 gradient.addColorStop(1, "#006600");
             }
             
-            ctx.fillStyle = gradient;
+            const picker = document.getElementById('snakeColorPicker');
+ctx.fillStyle = picker ? picker.value : gradient;
             ctx.shadowColor = isHead ? "#00ff00" : "#008800";
             ctx.shadowBlur = isHead ? 12 : 6;
             ctx.beginPath();
